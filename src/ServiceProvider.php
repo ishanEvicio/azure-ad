@@ -1,6 +1,6 @@
 <?php
 
-namespace IshanEvicio\AzureSocialite;
+namespace Ishanevicio\AzureSocialite;
 
 use SocialiteProviders\Manager\SocialiteWasCalled;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -29,14 +29,14 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->app['Laravel\Socialite\Contracts\Factory']->extend('azure-oauth', function($app){
             return $app['Laravel\Socialite\Contracts\Factory']->buildProvider(
-                'IshanEvicio\AzureSocialite\AzureOauthProvider',
+                'ishanevicio\AzureSocialite\AzureOauthProvider',
                 config('azure-oath.credentials')
             );
         });
 
         $this->app['router']->group(['middleware' => config('azure-oath.routes.middleware')], function($router){
-            $router->get(config('azure-oath.routes.login'), 'IshanEvicio\AzureSocialite\AuthController@redirectToOauthProvider');
-            $router->get(config('azure-oath.routes.callback'), 'IshanEvicio\AzureSocialite\AuthController@handleOauthResponse');
+            $router->get(config('azure-oath.routes.login'), 'ishanevicio\AzureSocialite\AuthController@redirectToOauthProvider');
+            $router->get(config('azure-oath.routes.callback'), 'ishanevicio\AzureSocialite\AuthController@handleOauthResponse');
         });
     }
 }

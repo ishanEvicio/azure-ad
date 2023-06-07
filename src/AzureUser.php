@@ -1,6 +1,6 @@
 <?php
 
-namespace IshanEvicio\AzureSocialite;
+namespace Ishanevicio\AzureSocialite;
 
 use Laravel\Socialite\Facades\Socialite;
 

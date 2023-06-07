@@ -1,0 +1,29 @@
+{
+    "name": "ishanevicio/laravel-azure-ad-oauth",
+    "description": "Provides single-sign-on ability to Microsoft Azure Active Directory enabled apps.",
+    "require": {
+        "laravel/framework": ">5.4",
+        "laravel/socialite": ">3.0"
+    },
+    "authors": [
+        {
+            "name": "Ishan Herath",
+            "email": "ishan.h@evicio.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ishanevicio\\AzureSocialite\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ishanevicio\\AzureSocialite\\ServiceProvider"
+            ],
+            "aliases": {
+                "AzureUser": "Ishanevicio\\AzureSocialite\\AzureUserFacade"
+            }
+        }
+    }
+}

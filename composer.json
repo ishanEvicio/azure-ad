@@ -4,7 +4,7 @@
     "require": {
         "laravel/framework": ">5.4",
         "laravel/socialite": ">3.0",
-        "ishanevicio/azure-ad":"main@dev"
+        "ishanevicio/azure-ad":"dev-main"
     },
     "authors": [
         {

@@ -1,6 +1,6 @@
 <?php
 
-namespace IshanEvicio\AzureSocialite;
+namespace Metrogistics\AzureSocialite;
 
 use Illuminate\Routing\Controller;
 use Laravel\Socialite\Facades\Socialite;
@@ -17,12 +17,15 @@ class AuthController extends Controller
         $user = Socialite::driver('azure-oauth')->user();
 
         $authUser = $this->findOrCreateUser($user);
+        if(!$authUser){
+           return redirect('/login')->with('error', 'Invalid user, Please try again!');
+        }
 
         auth()->login($authUser, true);
 
         session([
             'azure_access_token' => $user->token,
-            'azure_id_token' => $user->id_token
+            'user_email_address' => $user->email
         ]);
 
         return redirect(
@@ -33,20 +36,13 @@ class AuthController extends Controller
     protected function findOrCreateUser($user)
     {
         $user_class = config('azure-oath.user_class');
-        $authUser = $user_class::where(config('azure-oath.user_id_field'), $user->id)->first();
+        $authUser = $user_class::where(config('azure-oath.user_email_address'), $user->email)->first();
 
         if ($authUser) {
             return $authUser;
         }
 
-        $id_field = config('azure-oath.user_id_field');
 
-        $new_user = new $user_class;
-        $new_user->name = $user->name;
-        $new_user->email = $user->email;
-        $new_user->$id_field = $user->id;
-        $new_user->save();
-
-        return $new_user;
+        return false;
     }
 }

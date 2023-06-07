@@ -14,16 +14,16 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ishanevicio\\AzureSocialite\\": "src/"
+            "IshanEvicio\\AzureSocialite\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ishanevicio\\AzureSocialite\\ServiceProvider"
+                "IshanEvicio\\AzureSocialite\\ServiceProvider"
             ],
             "aliases": {
-                "AzureUser": "Ishanevicio\\AzureSocialite\\AzureUserFacade"
+                "AzureUser": "IshanEvicio\\AzureSocialite\\AzureUserFacade"
             }
         }
     }

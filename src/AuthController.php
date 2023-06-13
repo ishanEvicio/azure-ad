@@ -21,7 +21,7 @@ class AuthController extends Controller
            return redirect('/login')->with('error', 'Invalid user, Please try again!');
         }
 
-        auth()->login($authUser, true);
+        auth()->login($authUser, false);
 
         session([
             'azure_access_token' => $user->token,

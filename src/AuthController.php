@@ -42,7 +42,6 @@ class AuthController extends Controller
         else:
             $email=$user->userPrincipalName;
         endif;
-        dd($user);
         $authUser = $user_class::where(config('azure-oath.user_email_address'), $user->email)->first();
        
         if ($authUser) {

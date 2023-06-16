@@ -36,6 +36,7 @@ class AuthController extends Controller
     protected function findOrCreateUser($user)
     {
         $user_class = config('azure-oath.user_class');
+        // checking the details
         if($user->email):
             $email=$user->email;
         else:

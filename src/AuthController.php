@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         $authUser = $this->findOrCreateUser($user);
         if(!$authUser){
-           return redirect('/login')->with('error', 'Invalid user, Please try again!');
+           return redirect('/invalid-user')->with('error', 'Invalid user, Please try again!');
         }
 
         auth()->login($authUser, false);
@@ -36,8 +36,13 @@ class AuthController extends Controller
     protected function findOrCreateUser($user)
     {
         $user_class = config('azure-oath.user_class');
+        if($user->email):
+            $email=$user->email;
+        else:
+            $email=$user->userPrincipalName;
+        endif;
         $authUser = $user_class::where(config('azure-oath.user_email_address'), $user->email)->first();
-
+       
         if ($authUser) {
             return $authUser;
         }

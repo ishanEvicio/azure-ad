@@ -67,7 +67,7 @@ class AzureOauthProvider extends AbstractProvider implements ProviderInterface
             'id'                => $user['id'],
             'name'              => $user['displayName'],
             'email'             => $user['mail'],
-
+            'co'                =>'Evicio',
             'businessPhones'    => $user['businessPhones'],
             'displayName'       => $user['displayName'],
             'givenName'         => $user['givenName'],

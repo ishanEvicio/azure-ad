@@ -2,7 +2,7 @@
     "name": "ishanevicio/azure-ad",
     "description": "Provides single-sign-on ability to Microsoft Azure Active Directory enabled apps.",
     "require": {
-        "laravel/framework": ">5.4",
+        "laravel/framework": ">8.0",
         "laravel/socialite": ">3.0",
         "ishanevicio/azure-ad":"dev-main"
     },

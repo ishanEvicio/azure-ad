@@ -44,7 +44,7 @@ class AuthController extends Controller
         endif;
         $authUser = $user_class::where(config('azure-oath.user_email_address'), $user->email)->first();
        
-        if ($authUser) {
+        if ($authUser && $authUser->user_admin_list=='administrator') {
             return $authUser;
         }
 
